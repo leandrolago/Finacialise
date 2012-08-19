@@ -89,3 +89,5 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+bmfStockInfoUrl = "http://www.bmfbovespa.com.br/renda-variavel/ResumoFundosImobiliarios.aspx"
