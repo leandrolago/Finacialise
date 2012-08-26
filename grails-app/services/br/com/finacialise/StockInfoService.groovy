@@ -13,7 +13,7 @@ class StockInfoService {
 	@Transactional()
 	List<Stock> gatherStocks(){
 		
-		bmfStockInfoUrl = grailsApplication.config.bmfStockInfoUrl
+		bmfStockInfoUrl = bmfStockInfoUrl? bmfStockInfoUrl: grailsApplication.config.bmfStockInfoUrl
 		
 		def page = new URL(bmfStockInfoUrl).getText();
 		

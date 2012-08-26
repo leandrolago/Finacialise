@@ -10,10 +10,32 @@ class StockController {
 
 	def scaffold = true
 
-	StockInfoService StockInfoService
+	StockInfoService stockInfoService
 	
-    def gatherStocks() {
-		StockInfoService.gatherStocks()
+	StockPriceService stockPriceService
+	
+    def updateAllPrices(){
+		stockPriceService.updateAllPrices();
+		redirect(action: "list", params: params)
+	}
+	
+	def updatePrice( String id ){
+		def stockInstance = Stock.get(id)
+		if (!stockInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'stock.label', default: 'Stock'), id])
+			redirect(action: "list")
+			return
+		}
+		
+		stockPriceService.updatePrices(stockInstance)
+		
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'stock.label', default: 'Stock'), stockInstance.stockCode])
+		redirect(action: "show", id: stockInstance.id)
+		
+	}
+	
+	def gatherStocks() {
+		stockInfoService.gatherStocks()
 		redirect(action: "list", params: params)
 	}
 	

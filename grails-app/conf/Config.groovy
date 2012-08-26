@@ -91,3 +91,4 @@ log4j = {
 }
 
 bmfStockInfoUrl = "http://www.bmfbovespa.com.br/renda-variavel/ResumoFundosImobiliarios.aspx"
+stockPriceUrl = "http://financas.exame.abril.com.br/coletor/export/funds/#{stockCode}/interday/1m.csv"
